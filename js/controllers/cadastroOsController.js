@@ -5,6 +5,12 @@ app.controller('cadastroOsController',function($scope, $http){
     $('select').material_select();
     Materialize.updateTextFields(); 
     
+    $scope.atualizaCampos = function(){
+        
+        alert($scope.OS.placa);
+        
+    }
+    
     $scope.dadosCadOs = function(){
 
         $http.get('api/dadosCadOs')
