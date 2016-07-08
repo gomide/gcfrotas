@@ -4,19 +4,19 @@
          
     <div class=" col l3 s12">       
           <label class=" black-text" for="midia" >Veiculo</label>
-          <select id="veiculo" ng-model="OS.placa" ng-change="atualizaCampos();" class=" browser-default" required >    
+          <select id="veiculo" ng-model="OS.placa"  class=" browser-default" required >    
               <option value ="">Selecione uma opção</option>
               <option ng-repeat="dadosCadOs in alldadosCadOs" 
                       value ="{{dadosCadOs.VEI_IN_CODIGO}}">{{dadosCadOs.VEI_ST_PLACA}}</option>
       </select>
       </div>        
         <div class="input-field col l3 s12">     
-          <input placeholder="Modelo" disabled ng-model="OS.modelo" type="text" id="nome" class="validate" autocomplete="off">
+          <input placeholder="Modelo" ng-model="OS.modelo" type="text" id="nome" class="validate" autocomplete="off">
           <label class=" black-text"   for="nome">Modelo</label>
         </div> 
         
         <div class="input-field col l3 s12">     
-          <input placeholder="Unidade" disabled ng-model="OS.unidade" type="text" id="cargo" class="validate" autocomplete="off">
+          <input placeholder="Unidade" ng-model="OS.unidade" type="text" id="cargo" class="validate" autocomplete="off">
           <label class=" black-text"   for="cargo">Unidade</label>
         </div>
         <div class="input-field col l3 s12">     
