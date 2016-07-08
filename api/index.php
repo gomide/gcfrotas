@@ -25,6 +25,9 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
         $usuario = $_SESSION['usuario'];
     
     if(!empty($data[0]->placa)){
+      
+
+        
         $consulta = $db->con()->prepare('INSERT INTO os (
            USU_IN_CODIGO, OS_IN_KM, VEI_IN_CODIGO) 
            VALUES (:USUARIO, :KM, :VEI)');
@@ -35,30 +38,40 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
     
         if($consulta->execute() == 1){
           $idOs =  $db->con()->lastInsertId();
-            
-            foreach($data[1] as $produto ){
-                $valor = $produto->valor;
-                $nome = $produto->nome;
-                
-                        $consulta = $db->con()->prepare('INSERT INTO itens_os (
-                       OS_IN_CODIGO, PRO_IN_CODIGO, ITE_OS_FL_VALOR) 
-                       VALUES (:ID, :PRODUTO, :VALOR)');
-                        $consulta->bindParam(':ID', $idOs);
-                        $consulta->bindParam(':PRODUTO', $nome);
-                        $consulta->bindParam(':VALOR', $valor);
-                
-                    if($consulta->execute() == 0){
-                        $db->con()->rollBack();
-                    }
-
-                
+            $i = 0;
+            $dados = "";
+            foreach($data[1] as $produto){   
+              if($i != 0){ $dados .= ",";}
+              $dados .= "('" . $idOs . "', '" . $produto->nome . "', '" . $produto->valor . "')";            
+              $i++;  
             }
+
+            $consulta = $db->con()->prepare('INSERT INTO itens_os (
+                       OS_IN_CODIGO, PRO_IN_CODIGO, ITE_OS_FL_VALOR) 
+                       VALUES '.$dados);                
+            if($consulta->execute() == 1){
+                $db->con()->commit();                        
+            } else {
+                $db->con()->rollBack();
+            }               
+
         }
     }
-     $db->con()->commit();
-
 
 });
+
+
+
+$app->get('/dadosCadOs','auth',  function () use ($app, $db) {    
+        $consulta = $db->con()->prepare("SELECT
+                                            *
+                                         FROM
+                                            veiculos");
+        $consulta->execute();
+        $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(array("dadosCadOs"=>$dados));
+});
+
 
 $app->post('/cadLog','auth',  function () use ($app, $db) {        
         $data = json_decode($app->request()->getBody());        
