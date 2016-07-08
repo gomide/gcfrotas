@@ -2,23 +2,41 @@
     <form  name="CadTel" method="POST" id="CadTel"  class="col s12 white z-depth-2">
       <div class="row"><h5>Lancamento OS {{OS.placa}}</h5><div class="divider"></div><br>
          
-    <div class=" col l3 s12">       
-          <label class=" black-text" for="midia" >Veiculo</label>
+          
+        <div class=" col l3 s12">       
+          <label class=" black-text" for="unidade" >Unidades</label>
+          <select id="unidade" ng-model="OS.unidade"  class=" browser-default" required >    
+              <option value ="">Selecione uma opção</option>
+              <option ng-repeat="unidade in unidades" 
+                      value ="{{unidade.UNI_IN_CODIGO}}">{{unidade.UNI_ST_DESCRICAO}}</option>
+        </select>
+        </div>
+        <div class=" col l3 s12">       
+          <label class=" black-text" for="veiculo" >Veiculo</label>
           <select id="veiculo" ng-model="OS.placa" ng-change="atualizaCampos();" class=" browser-default" required >    
               <option value ="">Selecione uma opção</option>
-              <option ng-repeat="dadosCadOs in alldadosCadOs" 
-                      value ="{{dadosCadOs.VEI_IN_CODIGO}}">{{dadosCadOs.VEI_ST_PLACA}}</option>
-      </select>
-      </div>        
-        <div class="input-field col l3 s12">     
-          <input placeholder="Modelo" disabled ng-model="OS.modelo" type="text" id="nome" class="validate" autocomplete="off">
-          <label class=" black-text"   for="nome">Modelo</label>
-        </div> 
-        
-        <div class="input-field col l3 s12">     
-          <input placeholder="Unidade" disabled ng-model="OS.unidade" type="text" id="cargo" class="validate" autocomplete="off">
-          <label class=" black-text"   for="cargo">Unidade</label>
+              <option ng-repeat="veiculo in veiculos" 
+                      value ="{{veiculo.VEI_IN_CODIGO}}">{{veiculo.VEI_ST_PLACA}}</option>
+        </select>
         </div>
+        <div class=" col l3 s12">       
+          <label class=" black-text" for="marca" >Marca</label>
+          <select id="marca" ng-model="OS.marca" ng-change="atualizaCampos();" class=" browser-default" required >    
+              <option value ="">Selecione uma opção</option>
+              <option ng-repeat="marca in marcas" 
+                      value ="{{marca.MAR_IN_CODIGO}}">{{marca.MAR_ST_NOME}}</option>
+        </select>
+        </div>
+
+        <div class=" col l3 s12">       
+          <label class=" black-text" for="marca" >Modelo</label>
+          <select id="modelo" ng-model="OS.modelo" ng-change="atualizaCampos();" class=" browser-default" required >    
+              <option value ="">Selecione uma opção</option>
+              <option ng-repeat="modelo in modelos" 
+                      value ="{{modelo.MOD_VEI_IN_CODIGO}}">{{modelo.MOD_VEI_ST_DESCRICAO}}</option>
+        </select>
+        </div>       
+
         <div class="input-field col l3 s12">     
           <input placeholder="KM" ng-model="OS.km" type="text" id="empresa" class="validate" autocomplete="off">
           <label class=" black-text"   for="empresa">KM</label>
@@ -28,7 +46,7 @@
           <input placeholder="Data" ng-model="OS.data" id="email" type="email" class="validate" autocomplete="off">
           <label class=" black-text" for="email">Data</label>
         </div>
-          <div class="input-field col l9 s12"> 
+          <div class="input-field col l12 s12"> 
                  <textarea placeholder="Observação" ng-model="OS.obs" id="textarea1" class="materialize-textarea" length="120"></textarea>
             <label for="textarea1">Obs</label>
         </div>
