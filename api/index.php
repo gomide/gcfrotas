@@ -62,11 +62,11 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
 
 
 
-$app->get('/dadosCadOs','auth',  function () use ($app, $db) {    
+$app->get('/dadosCadOs/:tabela','auth',  function ($tabela) use ($app, $db) {  
         $consulta = $db->con()->prepare("SELECT
                                             *
                                          FROM
-                                            veiculos");
+                                            " . $tabela);
         $consulta->execute();
         $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(array("dadosCadOs"=>$dados));
