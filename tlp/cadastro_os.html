@@ -1,11 +1,15 @@
 <div class="row fade-in-up" style="padding: 1%" > 
     <form  name="CadTel" method="POST" id="CadTel"  class="col s12 white z-depth-2">
       <div class="row"><h5>Lancamento OS {{OS.placa}}</h5><div class="divider"></div><br>
-          
-        <div class="input-field col l3 s12">     
-          <input placeholder="Placa" ng-model="OS.placa" type="text" id="apelido"  autocomplete="off" required>
-          <label class=" black-text"   for="apelido">Placa</label>
-        </div>
+         
+    <div class=" col l3 s12">       
+          <label class=" black-text" for="midia" >Veiculo</label>
+          <select id="veiculo" ng-model="OS.placa"  class=" browser-default" required >    
+              <option value ="">Selecione uma opção</option>
+              <option ng-repeat="dadosCadOs in alldadosCadOs" 
+                      value ="{{dadosCadOs.VEI_IN_CODIGO}}">{{dadosCadOs.VEI_ST_PLACA}}</option>
+      </select>
+      </div>        
         <div class="input-field col l3 s12">     
           <input placeholder="Modelo" ng-model="OS.modelo" type="text" id="nome" class="validate" autocomplete="off">
           <label class=" black-text"   for="nome">Modelo</label>
