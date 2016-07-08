@@ -13,9 +13,36 @@ app.controller('cadastroOsController',function($scope, $http){
     
     $scope.dadosCadOs = function(){
 
-        $http.get('api/dadosCadOs')
+        $http.get('api/dadosCadOs/veiculos')
             .success(function(data){              
-                $scope.alldadosCadOs = data.dadosCadOs;
+                $scope.veiculos = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+        
+        $http.get('api/dadosCadOs/unidades')
+            .success(function(data){              
+                $scope.unidades = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+        
+        $http.get('api/dadosCadOs/modelos_veiculos')
+            .success(function(data){              
+                $scope.modelos = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+        
+        $http.get('api/dadosCadOs/marcas')
+            .success(function(data){              
+                $scope.marcas = data.dadosCadOs;
                 console.log(data.dadosCadOs);
             })
             .error(function(){
