@@ -5,6 +5,20 @@ app.controller('cadastroOsController',function($scope, $http){
     $('select').material_select();
     Materialize.updateTextFields(); 
     
+    $scope.dadosCadOs = function(){
+
+        $http.get('api/dadosCadOs')
+            .success(function(data){              
+                $scope.alldadosCadOs = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+
+    }
+    $scope.dadosCadOs();
+    
     $scope.OS = objOS();
     $scope.cadastroCliente = function(){
         $scope.osfim = [$scope.OS, $scope.produtos];
