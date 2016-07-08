@@ -1,0 +1,106 @@
+<div class="row fade-in-up" style="padding: 1%" > 
+    <form  name="CadTel" method="POST" id="CadTel"  class="col s12 white z-depth-2">
+      <div class="row"><h5>Lancamento OS {{OS.placa}}</h5><div class="divider"></div><br>
+          
+        <div class="input-field col l3 s12">     
+          <input placeholder="Placa" ng-model="OS.placa" type="text" id="apelido"  autocomplete="off" required>
+          <label class=" black-text"   for="apelido">Placa</label>
+        </div>
+        <div class="input-field col l3 s12">     
+          <input placeholder="Modelo" ng-model="OS.modelo" type="text" id="nome" class="validate" autocomplete="off">
+          <label class=" black-text"   for="nome">Modelo</label>
+        </div> 
+        
+        <div class="input-field col l3 s12">     
+          <input placeholder="Unidade" ng-model="OS.unidade" type="text" id="cargo" class="validate" autocomplete="off">
+          <label class=" black-text"   for="cargo">Unidade</label>
+        </div>
+        <div class="input-field col l3 s12">     
+          <input placeholder="KM" ng-model="OS.km" type="text" id="empresa" class="validate" autocomplete="off">
+          <label class=" black-text"   for="empresa">KM</label>
+        </div> 
+          
+        <div class="input-field col l3 s12">
+          <input placeholder="Data" ng-model="OS.data" id="email" type="email" class="validate" autocomplete="off">
+          <label class=" black-text" for="email">Data</label>
+        </div>
+          <div class="input-field col l9 s12"> 
+                 <textarea placeholder="Observação" ng-model="OS.obs" id="textarea1" class="materialize-textarea" length="120"></textarea>
+            <label for="textarea1">Obs</label>
+        </div>
+
+
+          
+          
+      </div>
+        <pre>{{ OS | json }}</pre>
+      <div class="row"><h5>Itens da OS {{cliente.nome}}</h5><div class="divider"></div><br> 
+          
+    <div class="row" >
+    
+        <div class=" col l3 s12">
+       
+          <label class=" black-text" for="midia" >Produto</label>
+              <select id="midia" ng-model="produto.nome"  class=" browser-default" required >        
+
+              <option value ="">Selecione uma opção</option>              
+              <option value ="1"  >Pneu</option>
+              <option value ="2"  >Bateria</option>                
+              <option value ="3"   >Prego</option>
+              <option value ="4"  >Filtro</option>
+              
+      </select>
+      
+      </div>
+      <div class="input-field col l3 s12">
+          <input placeholder="Valor" ng-model="produto.valor" id="email" type="tel" class="validate" autocomplete="off">
+          <label class=" black-text" for="email">Valor</label>
+      </div>
+      <div class="input-field col l3 s12">
+          <a ng-click="addProduto(produto)" class="waves-effect waves-light btn">Adicionar</a>
+      </div>
+        <table class=" highlight" >
+              <tr>
+                <td>Produto</td>
+                <td>Valor</td> 
+
+              </tr>
+              <tr ng-repeat="produtob in produtos">
+                <td>{{produtob.nome}}</td>
+                <td>{{produtob.valor}}</td>     
+              </tr>
+            </table>
+            <pre>{{ produto | json }}</pre>
+            <pre>{{ produtos | json }}</pre>
+        <pre>{{ osfim | json }}</pre>
+        
+      
+          
+    </div>
+          
+          
+  <!-- Modal Structure -->
+  <div id="cadAlerta" class="modal white">
+    <div class="modal-content">
+      <h4>{{titulo_modal}}</h4>
+        <li class="divider"></li>
+      <p>{{msg}}</p>
+    </div>
+    <div class="modal-footer deep-purple">
+        <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Completar cadastro</a>
+      <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Novo cadastro</a>
+    </div>
+  </div>      
+        
+    </form>  
+   
+    <button ng-click="cadastroCliente()" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
+    Salvar
+  </button>
+    </div>
+
+
+    
+    
+  
+
