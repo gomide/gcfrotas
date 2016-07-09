@@ -43,10 +43,10 @@
         </div> 
           
         <div class="input-field col l3 s12">
-          <input placeholder="Data" ng-model="OS.data" id="email" type="email" class="validate" autocomplete="off">
+          <input placeholder="Data" ng-model="OS.data" id="email" type="text" class="validate" autocomplete="off">
           <label class=" black-text" for="email">Data</label>
         </div>
-          <div class="input-field col l12 s12"> 
+          <div class="input-field col l6 s12"> 
                  <textarea placeholder="Observação" ng-model="OS.obs" id="textarea1" class="materialize-textarea" length="120"></textarea>
             <label for="textarea1">Obs</label>
         </div>
@@ -55,7 +55,7 @@
           
           
       </div>
-        <pre>{{ OS | json }}</pre>
+  
       <div class="row"><h5>Itens da OS {{cliente.nome}}</h5><div class="divider"></div><br> 
           
     <div class="row" >
@@ -63,13 +63,11 @@
         <div class=" col l3 s12">
        
           <label class=" black-text" for="midia" >Produto</label>
-              <select id="midia" ng-model="produto.nome"  class=" browser-default" required >        
+              <select id="midia"  ng-model="produto.nome"  class=" browser-default" required >        
 
               <option value ="">Selecione uma opção</option>              
-              <option value ="1"  >Pneu</option>
-              <option value ="2"  >Bateria</option>                
-              <option value ="3"   >Prego</option>
-              <option value ="4"  >Filtro</option>
+              <option ng-repeat="iten in itens" value ="{{iten.PRO_IN_CODIGO}}"  >{{iten.PRO_ST_DESCRICAO}}</option>
+
               
       </select>
       
@@ -92,9 +90,7 @@
                 <td>{{produtob.valor}}</td>     
               </tr>
             </table>
-            <pre>{{ produto | json }}</pre>
-            <pre>{{ produtos | json }}</pre>
-        <pre>{{ osfim | json }}</pre>
+           
         
       
           
