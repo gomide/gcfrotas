@@ -5,7 +5,7 @@
           
         <div class=" col l3 s12">       
           <label class=" black-text" for="unidade" >Unidades</label>
-          <select id="unidade" ng-model="OS.unidade"  class=" browser-default" required >    
+          <select id="unidade" ng-model="OS.unidade" ng-change="filtroVeiculo();"  class=" browser-default" required >    
               <option value ="">Selecione uma opção</option>
               <option ng-repeat="unidade in unidades" 
                       value ="{{unidade.UNI_IN_CODIGO}}">{{unidade.UNI_ST_DESCRICAO}}</option>
@@ -13,7 +13,7 @@
         </div>
         <div class=" col l3 s12">       
           <label class=" black-text" for="veiculo" >Veiculo</label>
-          <select id="veiculo" ng-model="OS.placa" ng-change="atualizaCampos();" class=" browser-default" required >    
+          <select id="veiculo" ng-model="OS.placa" ng-change="dadosVeiculo();" class=" browser-default" required >    
               <option value ="">Selecione uma opção</option>
               <option ng-repeat="veiculo in veiculos" 
                       value ="{{veiculo.VEI_IN_CODIGO}}">{{veiculo.VEI_ST_PLACA}}</option>
@@ -21,8 +21,8 @@
         </div>
         <div class=" col l3 s12">       
           <label class=" black-text" for="marca" >Marca</label>
-          <select id="marca" ng-model="OS.marca" ng-change="atualizaCampos();" class=" browser-default" required >    
-              <option value ="">Selecione uma opção</option>
+          <select id="marca" disabled ng-model="OS.marca" ng-change="atualizaCampos();" class=" browser-default" required >    
+              <option value ="">Exibe marca aqui</option>
               <option ng-repeat="marca in marcas" 
                       value ="{{marca.MAR_IN_CODIGO}}">{{marca.MAR_ST_NOME}}</option>
         </select>
@@ -30,8 +30,8 @@
 
         <div class=" col l3 s12">       
           <label class=" black-text" for="marca" >Modelo</label>
-          <select id="modelo" ng-model="OS.modelo" ng-change="atualizaCampos();" class=" browser-default" required >    
-              <option value ="">Selecione uma opção</option>
+          <select id="modelo" disabled ng-model="OS.modelo" ng-change="atualizaCampos();" class=" browser-default" required >    
+              <option value ="">Exibe modelo aqui</option>
               <option ng-repeat="modelo in modelos" 
                       value ="{{modelo.MOD_VEI_IN_CODIGO}}">{{modelo.MOD_VEI_ST_DESCRICAO}}</option>
         </select>
@@ -63,7 +63,7 @@
         <div class=" col l3 s12">
        
           <label class=" black-text" for="midia" >Produto</label>
-              <select id="midia"  ng-model="produto.nome"  class=" browser-default" required >        
+              <select id="midia"  ng-model="produto.nome"  class=" browser-default" >        
 
               <option value ="">Selecione uma opção</option>              
               <option ng-repeat="iten in itens" value ="{{iten.PRO_IN_CODIGO}}"  >{{iten.PRO_ST_DESCRICAO}}</option>
@@ -73,8 +73,8 @@
       
       </div>
       <div class="input-field col l3 s12">
-          <input placeholder="Valor" ng-model="produto.valor" id="email" type="tel" class="validate" autocomplete="off">
-          <label class=" black-text" for="email">Valor</label>
+          <input placeholder="Valor" ng-model="produto.valor" id="valor" type="tel" class="validate" autocomplete="off">
+          <label class=" black-text" for="valor">Valor</label>
       </div>
       <div class="input-field col l3 s12">
           <a ng-click="addProduto(produto)" class="waves-effect waves-light btn">Adicionar</a>
