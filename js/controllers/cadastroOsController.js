@@ -11,6 +11,37 @@ app.controller('cadastroOsController',function($scope, $http){
         
     }
     
+    $scope.filtroVeiculo = function(){
+        
+         $http.get('api/dadosCadOs/veiculos/'+$scope.OS.unidade)
+            .success(function(data){              
+                $scope.veiculos = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+        $scope.OS.placa = "";
+        $scope.OS.modelo = "";
+        $scope.OS.marca = "";
+        
+    }
+    
+    $scope.dadosVeiculo = function(){
+        
+         $http.get('api/dadosVeiculo/'+$scope.OS.placa)
+            .success(function(data){              
+                $scope.dadosV = data.dadosCadOs;
+                $scope.OS.modelo = $scope.dadosV[0].MOD_VEI_IN_CODIGO;
+                $scope.OS.marca = $scope.dadosV[0].MAR_IN_CODIGO;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+        
+    }
+    
     $scope.dadosCadOs = function(){
 
         $http.get('api/dadosCadOs/veiculos')
@@ -100,6 +131,7 @@ function objOS(){
     return {   
         placa : "",
         modelo : "",
+        marca : "",
         unidade : "",
         km : "",
         data : "",
