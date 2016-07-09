@@ -73,6 +73,43 @@ $app->get('/dadosCadOs/:tabela','auth',  function ($tabela) use ($app, $db) {
 });
 
 
+$app->get('/dadosCadOs/:tabela/:unidade','auth',  function ($tabela, $unidade) use ($app, $db) {  
+        $consulta = $db->con()->prepare("SELECT
+                                            *
+                                         FROM
+                                            veiculos
+                                         WHERE
+                                            UNI_IN_CODIGO = :ID");
+        $consulta->bindParam(':ID', $unidade);
+        $consulta->execute();
+        $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(array("dadosCadOs"=>$dados));
+});
+
+
+$app->get('/dadosVeiculo/:placa','auth',  function ($placa) use ($app, $db) {  
+        $consulta = $db->con()->prepare("SELECT
+                                            *
+                                         FROM
+                                            veiculos v                                        
+                                         INNER JOIN
+                                            modelos_veiculos mv
+                                         ON
+                                            mv.MOD_VEI_IN_CODIGO = v.MOD_VEI_IN_CODIGO
+                                         INNER JOIN
+                                            marcas m
+                                         ON
+                                            m.MAR_IN_CODIGO = mv.MAR_IN_CODIGO
+                                         WHERE
+                                            VEI_IN_CODIGO = :ID");
+        $consulta->bindParam(':ID', $placa);
+        $consulta->execute();
+        $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(array("dadosCadOs"=>$dados));
+});
+
+
+
 $app->post('/cadLog','auth',  function () use ($app, $db) {        
         $data = json_decode($app->request()->getBody());        
 	    $path = (isset($data->path)) ? $data->path : "";
