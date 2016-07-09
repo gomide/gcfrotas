@@ -48,6 +48,15 @@ app.controller('cadastroOsController',function($scope, $http){
             .error(function(){
                 alert("Falha em obter dados");
             });
+        
+        $http.get('api/dadosCadOs/produtos')
+            .success(function(data){              
+                $scope.itens = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
 
     }
     $scope.dadosCadOs();
