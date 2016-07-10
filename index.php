@@ -124,6 +124,7 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="js/jquery/jquery.js"></script>
       <script type="text/javascript" src="js/jquery/materialize.js"></script>
+      <script src="js/jquery/pt_BR.js"></script>
        <script type="text/javascript" src="js/jquery/perfect-scrollbar.jquery.js"></script>
       <script src="js/init.js"></script>
          <!-- START FOOTER -->
