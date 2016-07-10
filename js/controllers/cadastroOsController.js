@@ -1,6 +1,14 @@
 app.controller('cadastroOsController',function($scope, $http){
     
     console.log('cadastroOsController');
+    $('.datepicker').pickadate({
+    format: 'd/mm/yyyy',
+    formatSubmit: 'd/mm/yyyy',
+    closeOnSelect: true,
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+    
+  });
     $('input#input_text, textarea#textarea1').characterCounter();
     $('select').material_select();
     Materialize.updateTextFields(); 
