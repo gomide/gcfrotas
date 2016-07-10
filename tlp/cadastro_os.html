@@ -4,7 +4,7 @@
          
           
         <div class=" col l3 s12">       
-          <label class=" black-text" for="unidade" >Unidades</label>
+          <label class=" black-text" for="unidade" >Unidade</label>
           <select id="unidade" ng-model="OS.unidade" ng-change="filtroVeiculo();"  class=" browser-default" required >    
               <option value ="">Selecione uma opção</option>
               <option ng-repeat="unidade in unidades" 
@@ -38,13 +38,13 @@
         </div>       
 
         <div class="input-field col l3 s12">     
-          <input placeholder="KM" ng-model="OS.km" type="text" id="empresa" class="validate" autocomplete="off">
+          <input placeholder="KM" ng-model="OS.km" type="tel" id="empresa" class="validate" autocomplete="off">
           <label class=" black-text"   for="empresa">KM</label>
         </div> 
           
         <div class="input-field col l3 s12">
-          <input placeholder="Data" ng-model="OS.data" id="email" type="text" class="validate" autocomplete="off">
-          <label class=" black-text" for="email">Data</label>
+          <input placeholder="Data" ng-model="OS.data" id="data" type="date" class="datepicker" autocomplete="off">
+          <label class=" black-text" for="data">Data</label>
         </div>
           <div class="input-field col l6 s12"> 
                  <textarea placeholder="Observação" ng-model="OS.obs" id="textarea1" class="materialize-textarea" length="120"></textarea>
@@ -77,7 +77,7 @@
           <label class=" black-text" for="valor">Valor</label>
       </div>
       <div class="input-field col l3 s12">
-          <a ng-click="addProduto(produto)" class="waves-effect waves-light btn">Adicionar</a>
+          <a ng-click="addProduto(produto)" class="waves-effect deep-purple waves-light btn">Adicionar</a>
       </div>
         <table class=" highlight" >
               <tr>
@@ -87,7 +87,7 @@
               </tr>
               <tr ng-repeat="produtob in produtos">
                 <td>{{produtob.nome}}</td>
-                <td>{{produtob.valor}}</td>     
+                <td>{{produtob.valor | currency :"R$"}}</td>     
               </tr>
             </table>
            
