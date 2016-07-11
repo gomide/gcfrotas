@@ -10,6 +10,7 @@
     <head ng-controller="logController">        
         <script src="js/angular/angular.min.js"></script>
         <script src="js/angular/angular-route.min.js"></script>
+        <script src="js/angular/mask.js"></script>
         <script src="js/app.js"></script>
         
         <!-- Controllers -->
