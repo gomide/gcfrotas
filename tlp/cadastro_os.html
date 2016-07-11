@@ -1,7 +1,6 @@
 <div class="row fade-in-up" style="padding: 1%"  > 
-    <form  name="CadTel" method="POST" id="CadTel"  class="col s12 white z-depth-2">
+    <form  class="col s12 white z-depth-2">
       <div class="row"><h5>Lancamento OS {{OS.date}}</h5><div class="divider"></div><br>
-         
           
         <div class=" col l3 s12">       
           <label class=" black-text" for="unidade" >Unidade</label>
@@ -35,7 +34,15 @@
               <option ng-repeat="modelo in modelos" 
                       value ="{{modelo.MOD_VEI_IN_CODIGO}}">{{modelo.MOD_VEI_ST_DESCRICAO}}</option>
         </select>
-        </div>       
+        </div>
+        <div class=" col l3 s12">       
+          <label class=" black-text" for="fornecedor" >Fornecedor</label>
+          <select id="fornecedor"  ng-model="OS.fornecedor" class=" browser-default" required >    
+              <option value ="">Selecione uma opção</option>
+              <option ng-repeat="fornecedor in fornecedores" 
+                      value ="{{fornecedor.FOR_IN_CODIGO}}">{{fornecedor.FOR_ST_NOME}}</option>
+        </select>
+        </div> 
 
         <div class="input-field col l3 s12">     
           <input placeholder="KM" ng-model="OS.km" type="tel" id="empresa" class="validate" autocomplete="off">
@@ -43,31 +50,29 @@
         </div> 
           
         <div class="input-field col l3 s12">
-          <input placeholder="Data" ng-model="OS.date" id="date" type="text"  autocomplete="off">
-          <label class=" black-text" for="data">Data</label>
+        <label class=" black-text" for="date">Data</label>
+          <input id="date" ui-mask="99/99/9999" model-view-value="true" ui-mask-placeholder ui-mask-placeholder-char="_" ng-model="OS.date" id="date" type="tel"  autocomplete="off">          
         </div>
-          <div class="input-field col l6 s12"> 
+          <div class="input-field col l3 s12"> 
                  <textarea placeholder="Observação" ng-model="OS.obs" id="textarea1" class="materialize-textarea" length="120"></textarea>
             <label for="textarea1">Obs</label>
         </div>
-
-
           
           
-      </div>
-
-      <div class="row"><h5>Itens da OS {{cliente.nome}}</h5><div class="divider"></div><br> 
           
-    <div class="row" >
-    
+          <h5>Itens da OS {{cliente.nome}}</h5><div class="divider"></div><br>        
+   
         <div class=" col l3 s12">
-       
+
           <label class=" black-text" for="midia" >Produto</label>
            <select id="midia"  ng-model="produto.id"  class=" browser-default" >   
               <option value ="">Selecione uma opção</option>              
               <option ng-repeat="iten in itens" value ="{{iten.PRO_IN_CODIGO}}"  >{{iten.PRO_ST_DESCRICAO}}</option>
-            </select>
-      
+            </select>      
+      </div>
+      <div class="input-field col l3 s12">
+          <input placeholder="quantidade" ng-model="produto.quantidade" id="quantidade" type="tel" class="validate" autocomplete="off">
+          <label class=" black-text" for="quantidade">Quantidade</label>
       </div>
       <div class="input-field col l3 s12">
           <input placeholder="Valor" ng-model="produto.valor" id="valor" type="tel" class="validate" autocomplete="off">
@@ -78,21 +83,21 @@
       </div>
         <table class=" highlight centered bordered" >
               <tr>
-                <td>ID</td>
                 <td>Produto</td>  
+                <td>Quantidade</td>
                 <td>Valor</td>
-                <td>Valor</td> 
+                <td></td>
 
               </tr>
-              <tr ng-repeat="produtob in produtos">
-                <td>{{produtob.id}}</td>
+              <tr ng-repeat="produtob in produtos">                
             <td> 
                 <list ng-repeat="iten in itens">
                     <span ng-show="produtob.id == iten.PRO_IN_CODIGO"> {{iten.PRO_ST_DESCRICAO}} </span>
                 </list>      
             </td>  
-                <td>{{produtob.valor | currency :"R$"}}</td>
-                <td><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete_forever</i></a></td>  
+            <td>{{produtob.quantidade}}</td>
+            <td>{{produtob.valor | currency :"R$"}}</td>
+            <td><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete_forever</i></a></td>  
               </tr>
             </table>
     </div>
@@ -116,7 +121,7 @@
     <button ng-click="cadastroOs()" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
     Salvar
   </button>
-    </div>
+</div>
 
 
     
