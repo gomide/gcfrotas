@@ -1,5 +1,6 @@
 app.controller('cadastroOsController',function($scope, $http){
-    
+
+
     console.log('cadastroOsController');
     $('.datepicker').pickadate({
     format: 'd/mm/yyyy',
@@ -13,12 +14,7 @@ app.controller('cadastroOsController',function($scope, $http){
     $('select').material_select();
     Materialize.updateTextFields(); 
     
-    $scope.atualizaCampos = function(){
-        
-        alert($scope.OS.placa);
-        
-    }
-    
+ // inicio - filtro do compo de veiculo pelas unidades    
     $scope.filtroVeiculo = function(){
         
          $http.get('api/dadosCadOs/veiculos/'+$scope.OS.unidade)
@@ -34,6 +30,9 @@ app.controller('cadastroOsController',function($scope, $http){
         $scope.OS.marca = "";
         
     }
+  // fim - filtro do compo de veiculo pelas unidades
+    
+ // inicio - ao selecionar o veiculo e busca os dados da marca e modelo do veiculo   
     
     $scope.dadosVeiculo = function(){
         
@@ -50,6 +49,9 @@ app.controller('cadastroOsController',function($scope, $http){
         
     }
     
+ // fim - ao selecionar o veiculo e busca os dados da marca e modelo do veiculo 
+    
+ // inicio - busca de dados automaticos da tela de cadastro de OS   
     $scope.dadosCadOs = function(){
 
         $http.get('api/dadosCadOs/veiculos')
@@ -100,29 +102,52 @@ app.controller('cadastroOsController',function($scope, $http){
     }
     $scope.dadosCadOs();
     
+  // fim - busca de dados automaticos da tela de cadastro de OS
+    
+ // inicio - instacia objetos OS e produto e cria um array produtos    
     $scope.OS = objOS();
-    $scope.cadastroCliente = function(){
+    $scope.produto = objItens();
+    $scope.produtos = []; 
+  // fim - instacia objetos OS e produto e cria um array produtos
+    
+ 
+ // inicio - cadastra os dados de OS e produtos no banco de dados.    
+    $scope.cadastroOs = function(){
         $scope.osfim = [$scope.OS, $scope.produtos];
         $http
             .post('api/cadOs',  $scope.osfim)
             .success(function(data){
+                if(!data.erro) {
+                    // deu certo o cadastro
+                    
+                   $scope.titulo_modal = "Deu tudo certo! :D";
+                    $scope.msg = "Cadastrado com sucesso!";
+                    $('#cadAlerta').openModal();
+                    
+                    $scope.produtos = objItens();
+                    $scope.OS = objOS();
+                    $scope.produtos = []; 
+                    
+                } else {
+                    $('#cadAlertaN').openModal();
+                }
                 
              console.log(data);   
             })
             .error(function(){
                 alert("Falha geral da aplicação!");
             });
-    };  
-      
-    $scope.produto = objItens();
-    $scope.produtos = [];   
+    }; 
+ // fim - cadastra os dados de OS e produtos no banco de dados. 
     
+ // inicio - Alimenta array produtos com objtos de protuto 
     $scope.addProduto = function(produto){
         $scope.produtos.push(produto);
         $scope.produto = objItens();
 
        
      }; 
+ // fim - Alimenta array produtos com objtos de protuto
     
 
     
@@ -130,7 +155,7 @@ app.controller('cadastroOsController',function($scope, $http){
 
 function objItens(){
     return {
-        nome : "",
+        id : "",
         valor : ""
     }
 }
@@ -142,7 +167,7 @@ function objOS(){
         marca : "",
         unidade : "",
         km : "",
-        data : "",
+        date : "",
         obs : ""    
     };
 }

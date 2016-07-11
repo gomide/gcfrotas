@@ -1,6 +1,6 @@
-<div class="row fade-in-up" style="padding: 1%" > 
+<div class="row fade-in-up" style="padding: 1%"  > 
     <form  name="CadTel" method="POST" id="CadTel"  class="col s12 white z-depth-2">
-      <div class="row"><h5>Lancamento OS {{OS.placa}}</h5><div class="divider"></div><br>
+      <div class="row"><h5>Lancamento OS {{OS.date}}</h5><div class="divider"></div><br>
          
           
         <div class=" col l3 s12">       
@@ -21,7 +21,7 @@
         </div>
         <div class=" col l3 s12">       
           <label class=" black-text" for="marca" >Marca</label>
-          <select id="marca" disabled ng-model="OS.marca" ng-change="atualizaCampos();" class=" browser-default" required >    
+          <select id="marca" disabled ng-model="OS.marca" class=" browser-default" required >    
               <option value ="">Exibe marca aqui</option>
               <option ng-repeat="marca in marcas" 
                       value ="{{marca.MAR_IN_CODIGO}}">{{marca.MAR_ST_NOME}}</option>
@@ -30,7 +30,7 @@
 
         <div class=" col l3 s12">       
           <label class=" black-text" for="marca" >Modelo</label>
-          <select id="modelo" disabled ng-model="OS.modelo" ng-change="atualizaCampos();" class=" browser-default" required >    
+          <select id="modelo" disabled ng-model="OS.modelo" class=" browser-default" required >    
               <option value ="">Exibe modelo aqui</option>
               <option ng-repeat="modelo in modelos" 
                       value ="{{modelo.MOD_VEI_IN_CODIGO}}">{{modelo.MOD_VEI_ST_DESCRICAO}}</option>
@@ -43,7 +43,7 @@
         </div> 
           
         <div class="input-field col l3 s12">
-          <input placeholder="Data" ng-model="OS.data" id="data" type="date" class="datepicker" autocomplete="off">
+          <input placeholder="Data" ng-model="OS.date" id="date" type="text"  autocomplete="off">
           <label class=" black-text" for="data">Data</label>
         </div>
           <div class="input-field col l6 s12"> 
@@ -55,7 +55,7 @@
           
           
       </div>
-  
+
       <div class="row"><h5>Itens da OS {{cliente.nome}}</h5><div class="divider"></div><br> 
           
     <div class="row" >
@@ -63,13 +63,10 @@
         <div class=" col l3 s12">
        
           <label class=" black-text" for="midia" >Produto</label>
-              <select id="midia"  ng-model="produto.nome"  class=" browser-default" >        
-
+           <select id="midia"  ng-model="produto.id"  class=" browser-default" >   
               <option value ="">Selecione uma opção</option>              
               <option ng-repeat="iten in itens" value ="{{iten.PRO_IN_CODIGO}}"  >{{iten.PRO_ST_DESCRICAO}}</option>
-
-              
-      </select>
+            </select>
       
       </div>
       <div class="input-field col l3 s12">
@@ -79,24 +76,28 @@
       <div class="input-field col l3 s12">
           <a ng-click="addProduto(produto)" class="waves-effect deep-purple waves-light btn">Adicionar</a>
       </div>
-        <table class=" highlight" >
+        <table class=" highlight centered bordered" >
               <tr>
-                <td>Produto</td>
+                <td>ID</td>
+                <td>Produto</td>  
+                <td>Valor</td>
                 <td>Valor</td> 
 
               </tr>
               <tr ng-repeat="produtob in produtos">
-                <td>{{produtob.nome}}</td>
-                <td>{{produtob.valor | currency :"R$"}}</td>     
+                <td>{{produtob.id}}</td>
+            <td> 
+                <list ng-repeat="iten in itens">
+                    <span ng-show="produtob.id == iten.PRO_IN_CODIGO"> {{iten.PRO_ST_DESCRICAO}} </span>
+                </list>      
+            </td>  
+                <td>{{produtob.valor | currency :"R$"}}</td>
+                <td><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete_forever</i></a></td>  
               </tr>
             </table>
-           
-        
-      
-          
     </div>
           
-          
+         
   <!-- Modal Structure -->
   <div id="cadAlerta" class="modal white">
     <div class="modal-content">
@@ -105,14 +106,14 @@
       <p>{{msg}}</p>
     </div>
     <div class="modal-footer deep-purple">
-        <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Completar cadastro</a>
-      <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Novo cadastro</a>
+        <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Nova OS</a>
+      <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Imprimir OS</a>
     </div>
   </div>      
         
     </form>  
    
-    <button ng-click="cadastroCliente()" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
+    <button ng-click="cadastroOs()" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
     Salvar
   </button>
     </div>

@@ -7,7 +7,7 @@
 
 <!DOCTYPE html>
   <html ng-app="app">
-    <head >        
+    <head ng-controller="logController">        
         <script src="js/angular/angular.min.js"></script>
         <script src="js/angular/angular-route.min.js"></script>
         <script src="js/app.js"></script>
@@ -45,7 +45,7 @@
        </ul>
        <ul class="right hide-on-med-and-down">
         <li>
-            <a href="sass.html" class="dropdown-button black-text" href="#!" data-activates="menuNovo"><i class="material-icons left">queue</i>Novo</a>
+            <a  class="dropdown-button black-text" href="#!" data-activates="menuNovo"><i class="material-icons left">queue</i>Novo</a>
         </li>
         <li >
             <a class="dropdown-button black-text " href="#!" data-activates="menuPerfil">
@@ -77,7 +77,7 @@
     
           <!- Submenu desktop - Cadastros ->
 	  <ul id="menuNovo" class="dropdown-content" style="min-width: 148px !important; width: 148px !important; margin-left: 0px; z-index: 99999; overflow: visible;">
-        <li><a href="#/">OS</a></li>
+        <li><a href="#/cadastroOs">OS</a></li>
         <li class="divider"></li>
 
 			  
