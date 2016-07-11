@@ -45,7 +45,7 @@
         </div> 
 
         <div class="input-field col l3 s12">     
-          <input placeholder="KM" ng-model="OS.km" type="tel" id="empresa" class="validate" autocomplete="off">
+          <input placeholder="KM" type="number"  min="1" ng-model="OS.km" type="tel" id="empresa" class="validate" autocomplete="off">
           <label class=" black-text"   for="empresa">KM</label>
         </div> 
           
@@ -71,11 +71,11 @@
             </select>      
       </div>
       <div class="input-field col l3 s12">
-          <input placeholder="quantidade" ng-model="produto.quantidade" id="quantidade" type="tel" class="validate" autocomplete="off">
+          <input placeholder="quantidade" ng-model="produto.quantidade" id="quantidade" type="number"  min="1" class="validate" autocomplete="off">
           <label class=" black-text" for="quantidade">Quantidade</label>
       </div>
       <div class="input-field col l3 s12">
-          <input placeholder="Valor" ng-model="produto.valor" id="valor" type="tel" class="validate" autocomplete="off">
+          <input placeholder="Valor" ng-model="produto.valor" id="valor" type="number"  min="1" class="validate" autocomplete="off">
           <label class=" black-text" for="valor">Valor</label>
       </div>
       <div class="input-field col l3 s12">
