@@ -21,24 +21,19 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
         $modelo = $data[0]->modelo;
         $unidade = $data[0]->unidade;
         $km = $data[0]->km;
-        $date = $data[0]->date;
         $obs = $data[0]->obs;
         $usuario = $_SESSION['usuario'];
-        $nova_date = implode("-", array_reverse(explode("/", $date)));
-
     
     if(!empty($data[0]->placa)){
       
 
         
         $consulta = $db->con()->prepare('INSERT INTO os (
-           USU_IN_CODIGO, OS_IN_KM, VEI_IN_CODIGO, OS_TX_OBS, OS_DT_CADASTRO) 
-           VALUES (:USUARIO, :KM, :VEI, :OBS, :DATE)');
+           USU_IN_CODIGO, OS_IN_KM, VEI_IN_CODIGO) 
+           VALUES (:USUARIO, :KM, :VEI)');
         $consulta->bindParam(':USUARIO', $usuario);
         $consulta->bindParam(':KM', $km);
-        $consulta->bindParam(':OBS', $obs);
         $consulta->bindParam(':VEI', $placa);
-        $consulta->bindParam(':DATE', $nova_date);
   
     
         if($consulta->execute() == 1){
@@ -47,7 +42,7 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
             $dados = "";
             foreach($data[1] as $produto){   
               if($i != 0){ $dados .= ",";}
-              $dados .= "('" . $idOs . "', '" . $produto->id . "', '" . $produto->valor . "')";            
+              $dados .= "('" . $idOs . "', '" . $produto->nome . "', '" . $produto->valor . "')";            
               $i++;  
             }
 
@@ -55,11 +50,9 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
                        OS_IN_CODIGO, PRO_IN_CODIGO, ITE_OS_FL_VALOR) 
                        VALUES '.$dados);                
             if($consulta->execute() == 1){
-                $db->con()->commit();  
-                echo json_encode(array("erro"=>false)); 
+                $db->con()->commit();                        
             } else {
                 $db->con()->rollBack();
-                echo json_encode(array("erro"=>true)); 
             }               
 
         }
