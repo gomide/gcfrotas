@@ -72,6 +72,15 @@ app.controller('cadastroOsController',function($scope, $http){
                 alert("Falha em obter dados");
             });
         
+        $http.get('api/dadosCadOs/fornecedores')
+            .success(function(data){              
+                $scope.fornecedores = data.dadosCadOs;
+                console.log(data.dadosCadOs);
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+        
         $http.get('api/dadosCadOs/modelos_veiculos')
             .success(function(data){              
                 $scope.modelos = data.dadosCadOs;
@@ -156,7 +165,8 @@ app.controller('cadastroOsController',function($scope, $http){
 function objItens(){
     return {
         id : "",
-        valor : ""
+        valor : "",
+        quantidade : ""
     }
 }
 
@@ -168,6 +178,7 @@ function objOS(){
         unidade : "",
         km : "",
         date : "",
+        fornecedor : "",
         obs : ""    
     };
 }
