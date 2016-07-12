@@ -12,9 +12,12 @@
         <script src="js/angular/angular-route.min.js"></script>
         <script src="js/angular/mask.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/angular/highcharts-ng.js"></script>
+        <script src="js/angular/highstock.js"></script>
         
         <!-- Controllers -->
         <script src="js/controllers/cadastroOsController.js"></script>
+        <script src="js/controllers/dashController.js"></script>
         <script src="js/controllers/menuController.js"></script>
         <script src="js/controllers/logController.js"></script>
         <script src="js/controllers/resolucaoController.js"></script>
