@@ -71,6 +71,28 @@ $app->post('/cadOs','auth',  function () use ($app, $db) {
 
 
 
+$app->get('/graficoProduto','auth',  function () use ($app, $db) {  
+        $consulta = $db->con()->prepare("SELECT 
+                                            count(*) AS y,
+                                            p.PRO_ST_DESCRICAO as name
+                                        FROM 
+                                            os
+                                        INNER JOIN 
+                                            itens_os ios
+                                        ON 
+                                            ios.OS_IN_CODIGO = os.OS_IN_CODIGO
+                                        INNER JOIN 
+                                            produtos p
+                                        ON
+                                            p.PRO_IN_CODIGO = ios.PRO_IN_CODIGO
+                                        GROUP BY p.PRO_ST_DESCRICAO
+                                            ");
+        $consulta->execute();
+        $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(array("graficos"=>$dados));
+});
+
+
 $app->get('/dadosCadOs/:tabela','auth',  function ($tabela) use ($app, $db) {  
         $consulta = $db->con()->prepare("SELECT
                                             *
