@@ -89,7 +89,20 @@ $app->get('/graficoProduto','auth',  function () use ($app, $db) {
                                             ");
         $consulta->execute();
         $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode(array("graficos"=>$dados));
+        echo json_encode($dados);
+});
+
+
+$app->get('/graficoServico','auth',  function () use ($app, $db) {  
+        $consulta = $db->con()->prepare("select count(*) as y, s.SER_ST_DESCRICAO as name from gcf.servicos s
+inner join gcf.produtos p
+on p.SER_IN_CODIGO = s.SER_IN_CODIGO
+inner join gcf.itens_os ios
+on ios.PRO_IN_CODIGO = p.PRO_IN_CODIGO
+group by s.SER_ST_DESCRICAO");
+        $consulta->execute();
+        $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($dados);
 });
 
 
