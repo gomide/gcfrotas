@@ -1,84 +1,62 @@
 app.controller('dashController', function ($scope, $http) {
     
+            $http.get('api/graficoProduto')
+            .success(function(data){              
 
-
-    $scope.chartConfig = {
-        options: {
-            chart: {
-                type: 'pie'
-            }
-        },
-          series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
                 
-               'y': 100,
-                'name': 'Janeiro 100'
-            }, {
-                'name': 'Fevereiro 200',
-                'y': 200
-                
-            }]
-        }],
-        title: {
-            text: 'Produtos'
-        },
+                    $scope.chartConfigProduto = {
+                        options: {
+                            chart: {
+                                type: 'pie'
+                            }
+                        },
+                          series: [{
+                            name: 'Brands',
+                            colorByPoint: true,
+                            data: data
+                        }],
+                        title: {
+                            text: 'Produtos'
+                        },
 
-        loading: false
-} 
+                        loading: false,
+                        credits:{"enabled":false}
+                } 
+                
+             
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
 
     
-    $scope.chartConfig2 = {
-        options: {
-            chart: {
-                type: 'bar'
-            }
-        },
-          series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                
-               'y': 100,
-                'name': 'Janeiro 100'
-            }, {
-                'name': 'Fevereiro 200',
-                'y': 200
-                
-            }]
-        }],
-        title: {
-            text: 'Facs cadastradas'
-        },
+            $http.get('api/graficoServico')
+            .success(function(data){              
 
-        loading: false
-} 
-    
-        $scope.chartConfig3 = {
-        options: {
-            chart: {
-                type: 'line'
-            }
-        },
-          series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
                 
-               'y': 100,
-                'name': 'Janeiro 100'
-            }, {
-                'name': 'Fevereiro 200',
-                'y': 200
-                
-            }]
-        }],
-        title: {
-            text: 'Serviços'
-        },
+                    $scope.chartConfigServico = {
+                        options: {
+                            chart: {
+                                type: 'pie'
+                            }
+                        },
+                          series: [{
+                            name: 'Brands',
+                            colorByPoint: true,
+                            data: data
+                        }],
+                        title: {
+                            text: 'Serviços'
+                        },
 
-        loading: false
-} 
+                        loading: false,
+                        credits:{"enabled":false}
+                } 
+                
+             
+            })
+            .error(function(){
+                alert("Falha em obter dados");
+            });
+
 });
-
