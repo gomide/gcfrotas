@@ -14,8 +14,6 @@ $app->post('/cadVeiculo','auth',  function () use ($app, $db) {
         $usuario = $_SESSION['usuario'];
     
     if(!empty($data->placa)){
-      
-
         
         $consulta = $db->con()->prepare('INSERT INTO veiculos (
            VEI_ST_PLACA, USU_IN_CODIGO, UNI_IN_CODIGO, CCU_IN_CODIGO, MOD_VEI_IN_CODIGO) 
