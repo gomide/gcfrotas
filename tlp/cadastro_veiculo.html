@@ -1,0 +1,98 @@
+<div ng-controller="listVeiController" ng-show="cadVeiculo == 'nao'" class="row" style="padding: 1%">
+        <button ng-click="abrirCadastro('sim')" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
+    Cadastrar Veiculo
+  </button>
+    
+     <table class=" highlight centered bordered" >
+              <tr>
+                <td>Placa</td>  
+                <td>Editar</td>
+                <td>Excluir</td>
+             </tr>
+              <tr ng-repeat="veiculo in veiculos">                
+            <td> 
+                {{ veiculo.VEI_ST_PLACA}}
+            </td>  
+            <td><a class="btn-floating btn-large yellow waves-effect waves-light "><i class="material-icons">create</i></a</td>
+            <td><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete_forever</i></a></td>  
+              </tr>
+    </table>
+</div>
+
+
+<div ng-show="cadVeiculo == 'sim'" class="row fade-in-up" style="padding: 1%"  > 
+    <form  class="col s12 white z-depth-2">
+      <div class="row"><h5>Cadastro de Veiculo</h5><div class="divider"></div><br>
+          
+       <div class="row">   
+            <div class="input-field col l3 s12">     
+              <input placeholder="Placa" type="text"  ng-model="Veiculo.placa" id="placa" class="validate" autocomplete="off">
+              <label class=" black-text"   for="empresa">Placa</label>
+            </div>
+           
+           <div class=" col l3 s12">       
+              <label class=" black-text" for="unidade" >Marca</label>
+                <select id="marca" ng-model="Veiculo.marca"  class=" browser-default" required >    
+                  <option value ="">Selecione uma opção</option>
+                  <option ng-repeat="marca in marcas" 
+                          value ="{{marca.MAR_IN_CODIGO}}">{{marca.MAR_ST_NOME}}</option>
+                </select>
+            </div>
+           
+            <div class=" col l3 s12">       
+              <label class=" black-text" for="modelo" >Modelo</label>
+                <select id="modelo" ng-model="Veiculo.modelo"  class=" browser-default" required >    
+                  <option value ="">Selecione uma opção</option>
+                  <option ng-repeat="modelo in modelos" 
+                          value ="{{modelo.MOD_VEI_IN_CODIGO}}">{{modelo.MOD_VEI_ST_DESCRICAO}}</option>
+                </select>
+            </div>
+            
+        </div>
+          
+        <div class="row">
+
+            <div class=" col l3 s12">       
+              <label class=" black-text" for="unidade" >Unidade</label>
+                <select id="unidade" ng-model="Veiculo.unidade"  class=" browser-default" required >    
+                  <option value ="">Selecione uma opção</option>
+                  <option ng-repeat="unidade in unidades" 
+                          value ="{{unidade.UNI_IN_CODIGO}}">{{unidade.UNI_ST_DESCRICAO}}</option>
+                </select>
+            </div>
+            
+            <div class=" col l3 s12">       
+              <label class=" black-text" for="ccusto" >Centro de custo</label>
+                <select id="ccusto" ng-model="Veiculo.ccusto"  class=" browser-default" required >    
+                  <option value ="">Selecione uma opção</option>
+                  <option ng-repeat="ccusto in ccustos" 
+                          value ="{{ccusto.CCU_IN_CODIGO}}">{{ccusto.CCU_ST_DESCRICAO}}</option>
+                </select>
+            </div>
+        </div>
+  <!--   <pre>{{ Veiculo | json }}</pre>  -->  
+  <!-- Modal Structure -->
+  <div id="cadAlerta" class="modal white">
+    <div class="modal-content">
+      <h4>{{titulo_modal}}</h4>
+        <li class="divider"></li>
+      <p>{{msg}}</p>
+    </div>
+    <div class="modal-footer deep-purple">
+        <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Cadastrar Veiculo</a>
+      <a ng-click="abrirCadastro('nao')" class=" modal-action modal-close waves-effect waves-green white-text btn-flat" >Listar Veiculos</a>
+    </div>
+  </div>      
+        
+    </form>  
+   
+    <button ng-click="cadastroVeiculo()" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
+    Salvar
+  </button>
+</div>
+
+
+    
+    
+  
+
