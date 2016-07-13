@@ -113,10 +113,11 @@
               <a href="#/" class="collapsible-header fechaAba  waves-effect waves-purple white-text "  style="padding-left: 10%">GCFrotas
               </a>
           </li>              
-          <li class="bold" ng-repeat="menu in allmenu">
-            <a href="{{menu.men_st_url}}" ng-click="teste();" class="collapsible-header fechaAba  waves-effect waves-purple white-text ">            <i class="material-icons center">{{menu.men_st_img}}</i>
-           </a>                
-          </li>             
+          <li class="bold" ng-repeat="menu in allmenu" >
+              <a href="{{menu.men_st_url}}"  ng-click="teste();" class="collapsible-header  fechaAba  waves-effect waves-purple white-text btn ">      <i class="material-icons center" ng-show="options==null">{{menu.men_st_img}}</i>
+           </a>  
+              
+          </li>            
         </ul>
      </li>
 </ul>
