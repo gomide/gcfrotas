@@ -16,7 +16,9 @@
         <script src="js/angular/highstock.js"></script>
         
         <!-- Controllers -->
-        <script src="js/controllers/cadastroOsController.js"></script>
+        <script src="js/controllers/cadOsController.js"></script>
+        <script src="js/controllers/cadVeiController.js"></script>
+        <script src="js/controllers/listVeiController.js"></script>
         <script src="js/controllers/dashController.js"></script>
         <script src="js/controllers/menuController.js"></script>
         <script src="js/controllers/logController.js"></script>
