@@ -17,8 +17,8 @@
         
         <!-- Controllers -->
         <script src="js/controllers/cadOsController.js"></script>
-        <script src="js/controllers/cadVeiController.js"></script>
-        <script src="js/controllers/listVeiController.js"></script>
+        <script src="js/controllers/veiculosController.js"></script>
+      
         <script src="js/controllers/dashController.js"></script>
         <script src="js/controllers/menuController.js"></script>
         <script src="js/controllers/logController.js"></script>
