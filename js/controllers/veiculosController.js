@@ -34,6 +34,7 @@ app.controller('veiculoController',function($scope, $http){
             })
             .error(function(){
                 alert("Falha em obter notícia");
+                console.log('teste');
             });
    
     }
