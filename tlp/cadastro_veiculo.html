@@ -4,14 +4,31 @@
   </button>    
      <table class=" highlight centered bordered white" >
               <tr>
-                <td><b>Placa</b></td>  
+                <td><b>Placa</b></td>
+                <td class="hide-on-small-only"><b>Marca</b></td>
+                <td><b>Modelo</b></td>
+                <td><b>Unidade</b></td>
+                <td class="hide-on-small-only"><b>C.Custo</b></td>
                 <td><b>Editar</b></td>
                 <td><b>Excluir</b></td>
              </tr>
               <tr ng-repeat="veiculo in veiculos | filter:searchText">                
             <td> 
                 {{ veiculo.VEI_ST_PLACA}}
+            </td>
+            <td class="hide-on-small-only"> 
+                {{ veiculo.MAR_ST_NOME}}
             </td>  
+            <td> 
+                {{ veiculo.MOD_VEI_ST_DESCRICAO}}
+            </td>  
+            <td> 
+                {{ veiculo.UNI_ST_DESCRICAO}}
+            </td>  
+            <td class="hide-on-small-only"> 
+                {{ veiculo.CCU_ST_DESCRICAO}}
+            </td>  
+
             <td><a class="btn-floating btn-tiny yellow waves-effect waves-light "><i class="material-icons">create</i></a</td>
             <td><a class="btn-floating btn-tiny waves-effect waves-light red"><i ng-click="delVeiculo(veiculo.VEI_IN_CODIGO);" class="material-icons">delete_forever</i></a></td>  
               </tr>
