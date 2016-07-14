@@ -29,12 +29,30 @@ app.controller('veiculoController',function($scope, $http){
         if(!confirm("Tem certeza que deseja excluir?")) return false;
         
         $http.get('api/delVeiculo/'+deletado)
-            .success(function(data){
-                $scope.listVeiculos();
+            .success(function(data){           
+                if(data.erro){
+                    console.log(data.erro);
+                    console.log(data.msg);
+                    $scope.listVeiculos();
+                    $scope.titulo_modal = "Falhamos! :(";
+                    $scope.msg = data.msg;
+                    $('#AlertaExclusao').openModal();
+                } else {
+                    console.log('entrou no sucesso de gravacao!');
+                    console.log(data.erro);
+                    $scope.listVeiculos();
+                    $scope.titulo_modal = "Veiculo excluido com sucesso! :D";
+                    $scope.msg = "E isso ai agora e só lancar as OS's!";
+                    $('#AlertaExclusao').openModal();
+                    
+                } 
+             
+                
             })
             .error(function(){
-                alert("Falha em obter notícia");
+             
                 console.log('teste');
+
             });
    
     }
