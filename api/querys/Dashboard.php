@@ -25,7 +25,7 @@ $app->get('/graficoServico','auth',  function () use ($app, $db) {
         $consulta = $db->con()->prepare("select count(*) as y, s.SER_ST_DESCRICAO as name from servicos s
 inner join produtos p
 on p.SER_IN_CODIGO = s.SER_IN_CODIGO
-inner join gcf.itens_os ios
+inner join itens_os ios
 on ios.PRO_IN_CODIGO = p.PRO_IN_CODIGO
 group by s.SER_ST_DESCRICAO");
         $consulta->execute();
