@@ -3,9 +3,9 @@ app.controller('listVeiController',function($scope, $http){
     $scope.listVeiculos = function(){
         console.log('listar veiculos');
         
-        $http.get('api/dadosCadOs/veiculos')
+        $http.get('api/listVeiculos')
             .success(function(data){              
-                $scope.veiculos = data.dadosCadOs;
+                $scope.veiculos = data.listVeiculos;
                 console.log(data.dadosCadOs);
             })
             .error(function(){
