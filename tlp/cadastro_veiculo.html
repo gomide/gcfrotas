@@ -1,20 +1,19 @@
 <div ng-controller="listVeiController" ng-show="cadVeiculo == 'nao'" class="row" style="padding: 1%">
         <button ng-click="abrirCadastro('sim')" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
     Cadastrar Veiculo
-  </button>
-    
-     <table class=" highlight centered bordered" >
+  </button>    
+     <table class=" highlight centered bordered white" >
               <tr>
-                <td>Placa</td>  
-                <td>Editar</td>
-                <td>Excluir</td>
+                <td><b>Placa</b></td>  
+                <td><b>Editar</b></td>
+                <td><b>Excluir</b></td>
              </tr>
-              <tr ng-repeat="veiculo in veiculos">                
+              <tr ng-repeat="veiculo in veiculos | filter:searchText">                
             <td> 
                 {{ veiculo.VEI_ST_PLACA}}
             </td>  
-            <td><a class="btn-floating btn-large yellow waves-effect waves-light "><i class="material-icons">create</i></a</td>
-            <td><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete_forever</i></a></td>  
+            <td><a class="btn-floating btn-tiny yellow waves-effect waves-light "><i class="material-icons">create</i></a</td>
+            <td><a class="btn-floating btn-tiny waves-effect waves-light red"><i ng-click="delVeiculo(veiculo.VEI_IN_CODIGO);" class="material-icons">delete_forever</i></a></td>  
               </tr>
     </table>
 </div>
@@ -72,7 +71,7 @@
         </div>
   <!--   <pre>{{ Veiculo | json }}</pre>  -->  
   <!-- Modal Structure -->
-  <div id="cadAlerta" class="modal white">
+  <div id="cadAlerta" class="modal white" ng-controller="listVeiController">
     <div class="modal-content">
       <h4>{{titulo_modal}}</h4>
         <li class="divider"></li>
@@ -80,7 +79,7 @@
     </div>
     <div class="modal-footer deep-purple">
         <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Cadastrar Veiculo</a>
-      <a ng-click="abrirCadastro('nao')" class=" modal-action modal-close waves-effect waves-green white-text btn-flat" >Listar Veiculos</a>
+      <a ng-click="abrirCadastro('nao');" href="#/cadVeiculo" class=" modal-action modal-close waves-effect waves-green white-text btn-flat" >Listar Veiculos</a>
     </div>
   </div>      
         
