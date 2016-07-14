@@ -38,4 +38,23 @@ $app->post('/cadVeiculo','auth',  function () use ($app, $db) {
 });
 
 
+
+
+$app->get('/delVeiculo/:id','auth',  function ($id) use ($app, $db) {
+    $id = (int)$id;
+  
+        $consulta = $db->con()->prepare('DELETE 
+                                         FROM
+                                            veiculos
+                                        WHERE
+                                            VEI_IN_CODIGO = :ID');
+        $consulta->bindParam(':ID', $id);
+        
+        if($consulta->execute() == 1){      
+                echo json_encode(array("erro"=>false)); 
+            } else {             
+                echo json_encode(array("erro"=>true)); 
+            }
+});
+
 ?>
