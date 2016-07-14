@@ -69,6 +69,7 @@ $app->post('/cadVeiculo','auth',  function () use ($app, $db) {
 
 
 $app->get('/delVeiculo/:id','auth',  function ($id) use ($app, $db) {
+    try {
     $id = (int)$id;
   
         $consulta = $db->con()->prepare('DELETE 
@@ -83,6 +84,14 @@ $app->get('/delVeiculo/:id','auth',  function ($id) use ($app, $db) {
             } else {             
                 echo json_encode(array("erro"=>true)); 
             }
+     } catch(\Exception $e) {
+        $resposta = array("erro" => true, "msg" => $e->getMessage());
+
+        echo json_encode($resposta);  
+      #  echo json_encode(array("msg", $e->getMessage())); 
+          
+       
+    }
 });
 
 ?>
