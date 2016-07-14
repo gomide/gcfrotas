@@ -37,8 +37,20 @@
 
 
 <div ng-show="cadVeiculo == 'sim'" class="row fade-in-up" style="padding: 1%"  > 
+                     
     <form  class="col s12 white z-depth-2">
-      <div class="row"><h5>Cadastro de Veiculo</h5><div class="divider"></div><br>
+        
+        <ul class="right ">        
+        <li>
+            <a class="dropdown-button black-text " ng-click="abrirCadastro('nao');" >
+                <i class="material-icons">clear</i>
+            </a>
+        </li>
+       </ul>
+      <div class="row"><h5>Cadastro de Veiculo</h5>
+
+          
+          <div class="divider"></div><br>
           
        <div class="row">   
             <div class="input-field col l3 s12">     
