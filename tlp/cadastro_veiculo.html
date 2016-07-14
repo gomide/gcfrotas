@@ -1,4 +1,16 @@
 <div  ng-show="cadVeiculo == 'nao'" class="row" style="padding: 1%">
+    
+  <div id="AlertaExclusao" class="modal white" >
+    <div class="modal-content">
+      <h4>{{titulo_modal}}</h4>
+        <li class="divider"></li>
+      <p>{{msg}}</p>
+    </div>
+    <div class="modal-footer deep-purple">
+    <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">OK</a>      
+    </div>
+  </div> 
+    
         <button ng-click="abrirCadastro('sim')" class="btn-large  waves-effect deep-purple waves-light col s12 l12"  name="action">
     Cadastrar Veiculo
   </button><br><br><br>    
@@ -110,7 +122,8 @@
         <a class=" modal-action modal-close waves-effect waves-green white-text btn-flat">Cadastrar Veiculo</a>
       <a ng-click="abrirCadastro('nao');" class=" modal-action modal-close waves-effect waves-green white-text btn-flat" >Listar Veiculos</a>
     </div>
-  </div>      
+  </div>            
+   
         
     </form>  
    
