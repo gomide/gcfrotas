@@ -67,7 +67,7 @@ $app->post('/cadVeiculo','auth',  function () use ($app, $db) {
 
 
 
-
+// inicio - deletar veiculo
 $app->get('/delVeiculo/:id','auth',  function ($id) use ($app, $db) {
     try {
     $id = (int)$id;
@@ -93,5 +93,53 @@ $app->get('/delVeiculo/:id','auth',  function ($id) use ($app, $db) {
        
     }
 });
+
+// fim - deletar veiculo
+
+
+// inicio - editar veiculo
+
+$app->post('/editVeiculo','auth',  function () use ($app, $db) {
+        $db->con()->beginTransaction();
+    
+        $data = json_decode($app->request()->getBody());
+        $id = $data->id;
+        $placa = $data->placa;
+        $modelo = $data->modelo;
+        $unidade = $data->unidade;
+        $ccusto = $data->ccusto;        
+        $usuario = $_SESSION['usuario'];
+    
+    if(!empty($data->placa)){
+        
+        $consulta = $db->con()->prepare('UPDATE 
+                                            veiculos 
+                                        SET
+                                           VEI_ST_PLACA = :PLACA, 
+                                           USU_IN_CODIGO = :USUARIO, 
+                                           UNI_IN_CODIGO = :UNIDADE, 
+                                           CCU_IN_CODIGO = :CCUSTO, 
+                                           MOD_VEI_IN_CODIGO = :MODELO 
+                                        WHERE ');
+        $consulta->bindParam(':USUARIO', $usuario);
+        $consulta->bindParam(':PLACA', $placa);
+        $consulta->bindParam(':UNIDADE', $unidade);
+        $consulta->bindParam(':CCUSTO', $ccusto);
+        $consulta->bindParam(':MODELO', $modelo);  
+    
+        if($consulta->execute() == 1){
+                $db->con()->commit();  
+                echo json_encode(array("erro"=>false)); 
+            } else {
+                $db->con()->rollBack();
+                echo json_encode(array("erro"=>true)); 
+            }               
+
+        }
+    
+
+});
+
+// fim - editar veiculo
 
 ?>
