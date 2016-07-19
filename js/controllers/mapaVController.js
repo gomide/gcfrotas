@@ -1,6 +1,4 @@
 app.controller('mapaVController', function($scope, NgMap, $http, $location, $routeParams) {
-
-
     
     var id = $routeParams.placa;
     
@@ -10,18 +8,13 @@ app.controller('mapaVController', function($scope, NgMap, $http, $location, $rou
             .success(function(data){              
             $scope.mapaV = data.localiza;
                 console.log($scope.mapaV);
+                NgMap.getMap().then(function(map2) {
+                console.log(map2.getCenter());
+                console.log('markers', map2.markers);
+                console.log('shapes', map2.shapes);
+                }); 
             })
             .error(function(){
                 alert("Falha em obter dados");
     });
-   
-  NgMap.getMap().then(function(map) {
-    console.log(map.getCenter());
-    console.log('markers', map.markers);
-    console.log('shapes', map.shapes);
-  }); 
-
-    
-    
-
 });
