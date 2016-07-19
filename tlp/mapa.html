@@ -1,3 +1,60 @@
-  <ng-map  zoom="15" center="[-16.70233966, -49.24327601]">
-      <marker position="[-16.70233966, -49.24327601]" title="Socorro"></marker>
+<div style="width: 75%; float:left; height: 600%" class="z-depth-1 ">  
+<ng-map  zoom="16" center="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]">
+      <marker position="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]" title="{{ localmap[0].VEI_ST_PLACA }}"></marker>
   </ng-map>
+</div>
+
+
+
+<div class="row   " id="divteste"   >       
+       <div id="divteste4" > 
+        <div class="row col s12 m6 l3  "  >      
+          <form action=""  name="facsform" method="POST" class="z-depth-1 ">
+              <div id="profile-card" class="card hoverable " >
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <ng-map  zoom="16" center="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]">
+      <marker position="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]" title="{{ localmap[0].VEI_ST_PLACA }}"></marker>
+  </ng-map>
+                  </div>
+                  <div class="card-content blue-grey darken-3  ">
+                    <img src="img/photo.jpg" alt=""  class="circle responsive-img activator hoverable card-profile-image">
+                    <a href="#/editCliente" class="btn-floating deep-purple  btn-move-up waves-effect waves-light darken-2 right tooltipped" data-position="left" data-delay="50" data-tooltip="Editar">
+                      <i class="material-icons">person_pin_circle</i>
+                    </a>
+          <span class="card-title activator truncate white-text ">
+          Rafael Gomide
+          </span>
+
+
+          <i class="mdi-communication-email white-text "></i><label style="font-size:14px" class="white-text">
+          gomide@gomide.com </label><br>
+
+          <i class="mdi-action-perm-phone-msg white-text "></i><label style="font-size:14px" class="white-text">
+          (62) 8693-9988</label><br>
+
+          <i class="mdi-action-account-balance white-text "></i><label style="font-size:14px" class="white-text"> Romane</label><br>
+
+          <i class="mdi-social-notifications-on white-text "></i><label style="font-size:14px" class="white-text"> 12/11/2015</label><br>
+          
+          </div>
+          <div class="card-reveal">
+          <span class="card-title  teal-text ">
+          Rafael Gomide Bernades
+          <i class="mdi-navigation-close right"></i></span>
+                      <li class="divider"></li><br>
+                      <i class="mdi-action-perm-identity teal-text "></i> <label style="font-size:14px" class="teal-text">
+         Coordenadora de DP</label><br>
+                                             <i class="material-icons tiny teal-text valign">attach_money</i><label style="font-size:14px" class="teal-text">R$ 2.000,00</label><br>
+                                            <i class="material-icons tiny teal-text valign">person_pin_circle</i><label style="font-size:14px" class="teal-text"> Parque Amazonia</label><br>
+                                            <i class="material-icons tiny teal-text valign">favorite_border</i><label style="font-size:14px" class="teal-text"> Solteira</label><br>
+                                            
+                                            <i class="mdi-social-cake teal-text"></i><label style="font-size:14px" class="teal-text"> 18 Junho 1990</label>                                       
+                                        </div>
+                                </div>
+
+
+         
+</form>
+     </div>
+ </div>
+</div>

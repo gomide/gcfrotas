@@ -1,13 +1,19 @@
-app.controller('mapaController', function(NgMap, $http, $location, $routeParams) {
-    $scope.log.path = $location.path();         
-    $http.get('api/dadosCadOs/veiculos/'+$scope.log.path)
+app.controller('mapaController', function($scope, NgMap, $http, $location, $routeParams) {
+
+    $http.get('api/localizacao')
             .success(function(data){              
-                $scope.localiza = data.dadosCadOs;
-                console.log(data.dadosCadOs);
+            $scope.localmap = data.localiza;
+                console.log($scope.localmap);
+                console.log($scope.localmap[0].latitude);
+                    
+                
+             
             })
             .error(function(){
                 alert("Falha em obter dados");
     });
+    
+    
   NgMap.getMap().then(function(map) {
     console.log(map.getCenter());
     console.log('markers', map.markers);

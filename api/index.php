@@ -18,6 +18,7 @@ include('querys/Menu.php');
 include('querys/CadOs.php');
 include('querys/Log.php');
 include('querys/CadVeiculo.php');
+include('querys/Mapa.php');
 
 function auth(){
     if(isset($_SESSION['logado'])){
