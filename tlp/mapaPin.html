@@ -1,4 +1,6 @@
-
-<ng-map class="z-depth-1 " zoom="16" center="[{{ mapaV[0].latitude }}, {{ mapaV[0].longitude }}]">
-      <marker position="[{{ mapaV[0].latitude }}, {{ mapaV[0].longitude }}]" title="{{ mapaV[0].VEI_ST_PLACA }}"></marker>
+<div  class="row   "  ><br>
+    <h6> <br> Veiculo:</br> {{mapaV[0].VEI_ST_PLACA}}</h6>  
+<ng-map class="z-depth-1 " zoom="16" center="[mapaV[0].latitude, mapaV[0].longitude]">
+      <marker position="[ mapaV[0].latitude, mapaV[0].longitude]" title="{{mapaV[0].VEI_ST_PLACA}}"></marker>
 </ng-map>
+</div>
