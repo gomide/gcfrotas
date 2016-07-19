@@ -2,9 +2,9 @@ app.controller('mapaController', function($scope, NgMap, $http, $location, $rout
 
     $http.get('api/localizacao')
             .success(function(data){              
-            $scope.localmap = data.localiza;
-                console.log($scope.localmap);
-                console.log($scope.localmap[0].latitude);
+            $scope.allcarregaMotoristas = data.localiza;
+                console.log($scope.allcarregaMotoristas);
+                
                     
                 
              

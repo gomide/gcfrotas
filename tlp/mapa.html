@@ -1,19 +1,13 @@
-<div style="width: 75%; float:left; height: 600%" class="z-depth-1 ">  
-<ng-map  zoom="16" center="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]">
-      <marker position="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]" title="{{ localmap[0].VEI_ST_PLACA }}"></marker>
-  </ng-map>
-</div>
 
 
-
-<div class="row   " id="divteste"   >       
-       <div id="divteste4" > 
-        <div class="row col s12 m6 l3  "  >      
+<div class="row   " id="divteste" style="padding: 1%" >       
+       <div id="divteste4" class="white" > 
+        <div class="row col s12 m6 l3  " ng-repeat="carregaMotorista in allcarregaMotoristas | filter:searchText" >      
           <form action=""  name="facsform" method="POST" class="z-depth-1 ">
               <div id="profile-card" class="card hoverable " >
                   <div class="card-image waves-effect waves-block waves-light">
-                    <ng-map  zoom="16" center="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]">
-      <marker position="[{{ localmap[0].latitude }}, {{ localmap[0].longitude }}]" title="{{ localmap[0].VEI_ST_PLACA }}"></marker>
+                    <ng-map  zoom="16" center="[{{ carregaMotorista.latitude }}, {{ carregaMotorista.longitude }}]">
+      <marker position="[{{ carregaMotorista.latitude }}, {{ carregaMotorista.longitude }}]" title="{{ carregaMotorista.VEI_ST_PLACA }}"></marker>
   </ng-map>
                   </div>
                   <div class="card-content blue-grey darken-3  ">
@@ -32,7 +26,7 @@
           <i class="mdi-action-perm-phone-msg white-text "></i><label style="font-size:14px" class="white-text">
           (62) 8693-9988</label><br>
 
-          <i class="mdi-action-account-balance white-text "></i><label style="font-size:14px" class="white-text"> Romane</label><br>
+          <i class="mdi-action-account-balance white-text "></i><label style="font-size:14px" class="white-text"> Celular</label><br>
 
           <i class="mdi-social-notifications-on white-text "></i><label style="font-size:14px" class="white-text"> 12/11/2015</label><br>
           
