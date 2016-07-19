@@ -1,9 +1,9 @@
-app.controller('mapaVController', function($scope, NgMap, $http, $location, $routeParams) {
+app.controller('mapaVController', function($scope, NgMap, $http, $location, $routeParams, $interval) {
     
     var id = $routeParams.placa;
     
     console.log(id);
-    
+   $scope.carregaDadosMapa = function(){
     $http.get('api/localizacao/'+id)
             .success(function(data){              
             $scope.mapaV = data.localiza;
@@ -17,4 +17,11 @@ app.controller('mapaVController', function($scope, NgMap, $http, $location, $rou
             .error(function(){
                 alert("Falha em obter dados");
     });
+    }
+   $scope.carregaDadosMapa();
+    
+      $interval(function () {
+      console.log('teste');
+          $scope.carregaDadosMapa();
+  }, 5000);
 });
