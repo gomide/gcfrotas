@@ -14,10 +14,12 @@
         <script src="js/app.js"></script>
         <script src="js/angular/highcharts-ng.js"></script>
         <script src="js/angular/highstock.js"></script>
+        <script src="js/angular/ng-map.js"></script>
         
         <!-- Controllers -->
         <script src="js/controllers/cadOsController.js"></script>
         <script src="js/controllers/veiculosController.js"></script>
+        <script src="js/controllers/mapaController.js"></script>
       
         <script src="js/controllers/dashController.js"></script>
         <script src="js/controllers/menuController.js"></script>
@@ -26,6 +28,9 @@
         
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+      <!-- google maps -->
+      <script src="http://maps.google.com/maps/api/js?key=AIzaSyB-mym5OfR00uVGfiwPJB7JBlecUF4o4rI"></script>
        
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
@@ -35,6 +40,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="utf-8">
         <meta name="theme-color" content="#673ab7">
+         <style>   
+    map {display:block; width:100%; height:100%;}
+  </style>
     </head>
 
     <body class="grey lighten-3" ng-controller="resolucaoController">
