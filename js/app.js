@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngRoute','ui.mask','highcharts-ng'] );
+var app = angular.module('app',['ngRoute','ui.mask','highcharts-ng','ngMap'] );
 app.config(function($routeProvider){  
 
     $routeProvider.
@@ -8,5 +8,7 @@ app.config(function($routeProvider){
             templateUrl:'tlp/cadastro_veiculo.html'}).
     when('/',{controller:'dashController', 
             templateUrl:'tlp/dash.html'}).
+    when('/mapa',{controller:'mapaController', 
+            templateUrl:'tlp/mapa.html'}).
     otherwise({redirectTo:'/'});
 });
