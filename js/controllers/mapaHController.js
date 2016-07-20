@@ -1,9 +1,11 @@
 app.controller('mapaHController', function($scope, NgMap, $http, $location, $routeParams, $interval) {
     
     var id = $routeParams.placa;
-    console.log(id);
+    var ini = $routeParams.ini;
+    var fim = $routeParams.fim;
+    console.log(id+ini+fim);
    $scope.carregaDadosMapa = function(){
-    $http.get('api/localizacaoH/'+id)
+    $http.get('api/localizacaoH/'+id+'/'+ini+'/'+fim)
             .success(function(data){   
         $scope.falha = "";
             $scope.mapasH = data.localiza;

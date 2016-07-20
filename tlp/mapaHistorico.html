@@ -1,17 +1,13 @@
 <br class="hide-on-large-only">
 <div class="row fade-in-up" style="padding: 1%"  > 
 <ng-map default-style="false" disable-default-u-i="false" class="z-depth-1 " zoom="13" 
-        center="[-16.6862191,-49.2522651]">
+        center="[{{mapasH[0].latitude}} , {{mapasH[0].longitude}}]">
 <marker ng-repeat="mapaH in mapasH" position="[{{mapaH.latitude}} , {{mapaH.longitude}}]" title="{{mapaH.id}}"></marker>
 
 </ng-map>
-<blockquote >
-        <h6> <b> Vinculo:</b> {{mapaV[0].name}}</h6>
-        <h6> <b> Velocidade:</b> {{mapaV[0].speed}}</h6>
-      <h6> <b> Latitude:</b> {{mapaV[0].latitude + mapaV[0].longitude}}</h6>
-        <h6> <b> Latitude:</b> {{mapaV[0].longitude}}</h6> 
-    <h6> <b> Ultimo registro:</b> {{mapaV[0].latestPosition_id}}</h6> 
-    <h6> <b> Data Hora:</b> {{mapaV[0].time}}</h6>
+<blockquote >       
+    <h6> <b> Latitude:</b> {{mapasH[0].latitude }}</h6>
+    <h6> <b> Latitude:</b> {{mapasH[0].longitude}}</h6>
     <h6 class="red">  {{falha}}</h6> 
     
 

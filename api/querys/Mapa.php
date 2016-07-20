@@ -28,7 +28,7 @@ $app->get('/localizacao/:id','auth',  function ($id) use ($app, $db) {
     echo json_encode(array("localiza"=>$dados, JSON_NUMERIC_CHECK));
 });
 
-$app->get('/localizacaoH/:id','auth',  function ($id) use ($app, $db) {  
+$app->get('/localizacaoH/:id/:ini/:fim','auth',  function ($id, $dataini, $datafim) use ($app, $db) {  
         $consulta = $db->con()->prepare("SELECT 
                                                 p.id,
                                                 p.latitude,
@@ -41,10 +41,12 @@ $app->get('/localizacaoH/:id','auth',  function ($id) use ($app, $db) {
                                             INNER JOIN gcf.positions p
                                             ON p.device_id = D.id
                                             where v.vei_st_placa = :ID
-                                            and time BETWEEN '2015-02-05 12:30:00' AND '2015-02-05 13:00:00' 
+                                            and time BETWEEN :INICIO AND :FIM 
                                             order by p.id
                                             ");
         $consulta->bindParam(':ID', $id);
+        $consulta->bindParam(':INICIO', $dataini);
+        $consulta->bindParam(':FIM', $datafim);
         $consulta->execute();
         $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
      
