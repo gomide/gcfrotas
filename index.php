@@ -21,6 +21,7 @@
         <script src="js/controllers/veiculosController.js"></script>
         <script src="js/controllers/mapaController.js"></script>
         <script src="js/controllers/mapaVController.js"></script>
+        <script src="js/controllers/mapaHController.js"></script>
       
         <script src="js/controllers/dashController.js"></script>
         <script src="js/controllers/menuController.js"></script>

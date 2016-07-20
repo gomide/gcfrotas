@@ -1,15 +1,13 @@
-app.controller('mapaVController', function($scope, NgMap, $http, $location, $routeParams, $interval) {
+app.controller('mapaHController', function($scope, NgMap, $http, $location, $routeParams, $interval) {
     
     var id = $routeParams.placa;
-    $scope.streetv = 'sim';
-    console.log($scope.streetv);
     console.log(id);
    $scope.carregaDadosMapa = function(){
-    $http.get('api/localizacao/'+id)
+    $http.get('api/localizacaoH/'+id)
             .success(function(data){   
         $scope.falha = "";
-            $scope.mapaV = data.localiza;
-                console.log($scope.mapaV);
+            $scope.mapasH = data.localiza;
+                console.log($scope.mapaH);
                 NgMap.getMap().then(function(map2) {
                 console.log(map2.getCenter());
                 console.log('markers', map2.markers);
@@ -22,8 +20,5 @@ app.controller('mapaVController', function($scope, NgMap, $http, $location, $rou
     }
    $scope.carregaDadosMapa();
     
-      $interval(function () {
-      console.log('teste');
-          $scope.carregaDadosMapa();
-  }, 5000);
+      
 });
