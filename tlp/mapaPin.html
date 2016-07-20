@@ -1,5 +1,8 @@
-<br><ng-map class="z-depth-1 " zoom="16" center="[{{mapaV[0].latitude}} , {{mapaV[0].longitude}}]">
+<br class="hide-on-large-only">
+<div class="row fade-in-up" style="padding: 1%"  > 
+<ng-map default-style="false" class="z-depth-1 " zoom="16" center="[{{mapaV[0].latitude}} , {{mapaV[0].longitude}}]">
 <marker position="[{{mapaV[0].latitude}} , {{mapaV[0].longitude}}]" title="{{mapaV[0].VEI_ST_PLACA}}"></marker>
+
 </ng-map>
 <blockquote >
         <h6> <b> Vinculo:</b> {{mapaV[0].name}}</h6>
@@ -7,7 +10,9 @@
       <h6> <b> Latitude:</b> {{mapaV[0].latitude + mapaV[0].longitude}}</h6>
         <h6> <b> Latitude:</b> {{mapaV[0].longitude}}</h6> 
     <h6> <b> Ultimo registro:</b> {{mapaV[0].latestPosition_id}}</h6> 
-    <h6> <b> Data Hora:</b> {{mapaV[0].time}}</h6> 
+    <h6> <b> Data Hora:</b> {{mapaV[0].time}}</h6>
+    <h6 class="red">  {{falha}}</h6> 
     
 
 </blockquote>
+</div>

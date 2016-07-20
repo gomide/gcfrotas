@@ -1,7 +1,8 @@
 app.controller('mapaVController', function($scope, NgMap, $http, $location, $routeParams, $interval) {
     
     var id = $routeParams.placa;
-    
+    $scope.streetv = 'sim';
+    console.log($scope.streetv);
     console.log(id);
    $scope.carregaDadosMapa = function(){
     $http.get('api/localizacao/'+id)
@@ -15,7 +16,7 @@ app.controller('mapaVController', function($scope, NgMap, $http, $location, $rou
                 }); 
             })
             .error(function(){
-                alert("Falha em obter dados");
+                $scope.falha = "Falha em obter dados";
     });
     }
    $scope.carregaDadosMapa();

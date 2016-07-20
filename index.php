@@ -41,9 +41,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="utf-8">
         <meta name="theme-color" content="#673ab7">
-         <style>   
-    map {display:block; width:100%; height:100%;}
-  </style>
+
     </head>
 
     <body class="grey lighten-3" ng-controller="resolucaoController">
