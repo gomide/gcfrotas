@@ -1,11 +1,11 @@
 <?php
 
 $app->get('/localizacao','auth',  function () use ($app, $db) {  
-        $consulta = $db->con()->prepare("SELECT * FROM gcf.veiculos v
-                                            INNER JOIN gcf.devices D
+        $consulta = $db->con()->prepare("SELECT * FROM veiculos v
+                                            INNER JOIN devices D
                                             ON D.id = v.ID_DEVICE
-                                            INNER JOIN gcf.positions p
-                                            ON p.id = D.latestPosition_id
+                                            INNER JOIN positions p
+                                            ON p.id = D.positionid
                                             ");
         $consulta->execute();
         $dados = $consulta->fetchAll(PDO::FETCH_ASSOC);
@@ -14,11 +14,11 @@ $app->get('/localizacao','auth',  function () use ($app, $db) {
 });
 
 $app->get('/localizacao/:id','auth',  function ($id) use ($app, $db) {  
-        $consulta = $db->con()->prepare("SELECT * FROM gcf.veiculos v
-                                            INNER JOIN gcf.devices D
+        $consulta = $db->con()->prepare("SELECT * FROM veiculos v
+                                            INNER JOIN devices D
                                             ON D.id = v.ID_DEVICE
-                                            INNER JOIN gcf.positions p
-                                            ON p.id = D.latestPosition_id
+                                            INNER JOIN positions p
+                                            ON p.id = D.positionid
                                             where v.vei_st_placa = :ID
                                             ");
         $consulta->bindParam(':ID', $id);
@@ -33,15 +33,15 @@ $app->get('/localizacaoH/:id/:ini/:fim','auth',  function ($id, $dataini, $dataf
                                                 p.id,
                                                 p.latitude,
                                                 p.longitude,
-                                                p.time,
+                                                p.devicetime ,
                                                 p.speed
-                                                FROM gcf.veiculos v
-                                            INNER JOIN gcf.devices D
+                                                FROM veiculos v
+                                            INNER JOIN devices D
                                             ON D.id = v.ID_DEVICE
-                                            INNER JOIN gcf.positions p
-                                            ON p.device_id = D.id
+                                            INNER JOIN positions p
+                                            ON p.deviceid = D.id
                                             where v.vei_st_placa = :ID
-                                            and time BETWEEN :INICIO AND :FIM 
+                                            and devicetime BETWEEN :INICIO AND :FIM 
                                             order by p.id
                                             ");
         $consulta->bindParam(':ID', $id);

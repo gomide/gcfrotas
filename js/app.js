@@ -12,7 +12,7 @@ app.config(function($routeProvider){
             templateUrl:'tlp/mapa.html'}).
     when('/mapa/:placa',{controller:'mapaVController', 
             templateUrl:'tlp/mapaPin.html'}).
-    when('/mapaH/:placa/:ini/:fim',{controller:'mapaHController', 
+    when('/mapaH',{controller:'mapaHController', 
             templateUrl:'tlp/mapaHistorico.html'}).
     otherwise({redirectTo:'/'});
 });

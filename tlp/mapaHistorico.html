@@ -1,15 +1,51 @@
 <br class="hide-on-large-only">
-<div class="row fade-in-up" style="padding: 1%"  > 
-<ng-map default-style="false" disable-default-u-i="false" class="z-depth-1 " zoom="13" 
-        center="[{{mapasH[0].latitude}} , {{mapasH[0].longitude}}]">
-<marker ng-repeat="mapaH in mapasH" position="[{{mapaH.latitude}} , {{mapaH.longitude}}]" title="{{mapaH.id}}"></marker>
+<div class="row fade-in-up" style="padding: 1%"  >
+
+<ng-map default-style="false" center="[{{origem.latitude}} , {{origem.longitude}}]" disable-default-u-i="false" class="z-depth-1 " zoom="13" >
+    <marker label="A"  position="[{{origem.latitude}} , {{origem.longitude}}]" title="Origem"></marker>
+    <marker label="B" position="[{{destino.latitude}} , {{destino.longitude}}]" title="Destino"></marker>
+      <shape name="polyline" 
+      path="[{{wayPoints}}]"
+      geodesic="true"
+      stroke-color="#FF0000"
+      stroke-opacity="1.0"
+      stroke-weight="2">
+      </shape>
 
 </ng-map>
-<blockquote >       
-    <h6> <b> Latitude:</b> {{mapasH[0].latitude }}</h6>
-    <h6> <b> Latitude:</b> {{mapasH[0].longitude}}</h6>
-    <h6 class="red">  {{falha}}</h6> 
-    
+    <form  class="col s12 white z-depth-2">
+        <div class=" col l3 s12">       
+              <label class=" black-text" for="veiculo" >Veiculo</label>
+              <select id="veiculo" ng-model="Historico.id"  class=" browser-default" required >    
+                  <option value ="">Selecione uma opção</option>
+                  <option ng-repeat="veiculo in veiculos" 
+                          value ="{{veiculo.VEI_ST_PLACA}}">{{veiculo.VEI_ST_PLACA}}</option>
+            </select>
+            </div>
+         <div class="input-field col l3 s12">     
+          <input placeholder="Data Inicial"  ng-model="Historico.dtIni" type="text" id="dtini" class="validate" autocomplete="off">
+          <label class=" black-text"   for="empresa">Data inicial</label>
+        </div> 
+         <div class=" col l1 s12">       
+              <label class=" black-text" for="veiculo" >Hora</label>
+              <select id="veiculo" ng-model="Historico.hrIni"  class=" browser-default" required >    
+                  <option value ="">Horas</option>
+                  <option value ="00:00:00">00:00</option>
+                  <option value ="00:30:00">00:30</option>
+                  <option value ="01:00:00">01:00</option>
+            </select>
+            </div>
+        <div class="input-field col l3 s12">     
+          <input placeholder="Data final"    ng-model="Historico.dtFin" type="text" id="dtfin" class="validate" autocomplete="off">
+          <label class=" black-text"   for="empresa">Data final</label>
+        </div>
+        <div class="input-field col l3 s12">     
+          <button ng-click="carregaDadosMapa(Historico.id, Historico.dtIni ,Historico.dtFin)"
+                            class="btn-large  waves-effect deep-purple waves-light col s12 l12">Carregar</button>
+        </div>
+        
+    </form>
 
-</blockquote>
 </div>
+
+
